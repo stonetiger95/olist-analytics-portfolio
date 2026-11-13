@@ -259,6 +259,7 @@ SP는 지연 주문 **1,820건**으로 절대 건수가 가장 많지만, 지연
 A_delivery_quality/
 ├── README.md
 ├── sql/
+│   ├── day00_load_data.sql
 │   ├── day01_data_validation.sql
 │   ├── day03_analysis_views.sql
 │   └── day04_business_analysis.sql
@@ -283,8 +284,8 @@ A_delivery_quality/
 
 1. [데이터 준비](../README.md#데이터-준비)에 따라 PostgreSQL `olist` 데이터베이스에 CSV를 적재하고 Python 환경을 설치한다.
 2. `day01_data_validation.sql`로 테이블 구조, 참조 관계, 지연 KPI를 검증한다.
-3. `day03_analysis_views.sql`을 실행해 `analytics` 스키마 및 분석용 View를 생성한다.
-4. 최상위 `.env`에 DB 접속 환경변수를 설정하고 `notebooks/day02_delivery_distribution.ipynb`를 실행한다. 주요 변수 이름은 `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME`이다.
+3. 저장소 루트의 `.env`에 `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME`을 설정하고 [Day 02 Notebook](../notebooks/day02_delivery_distribution.ipynb)을 전체 실행한다. Notebook은 `public.orders`와 `public.reviews`를 읽는다.
+4. [Day 03 SQL](../sql/day03_analysis_views.sql)을 실행해 `analytics` 스키마와 분석용 뷰를 생성한다.
 5. `day04_business_analysis.sql`을 실행해 지역·판매자·상품군별 초과 지연 건수와 구매 월별 지연율을 확인한다.
 6. `dashboards/`의 Tableau 패키지 통합 문서를 열거나 Tableau Public 게시본에서 두 대시보드를 확인한다.
 

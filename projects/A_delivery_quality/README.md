@@ -172,20 +172,24 @@ SP 소재 판매자의 배송 목적지를 비교하면 다음과 같습니다.
 | `olist_sellers_dataset.csv` | `sellers` |
 | `product_category_name_translation.csv` | `product_category_name_translation` |
 
-테이블을 먼저 생성합니다. ID·우편번호·범주에는 `text`, 날짜와 시각에는 `timestamp`, 건수와 순번에는 `integer`, 금액과 좌표에는 `numeric`을 사용합니다. 예를 들어 `customers` 테이블을 만든 뒤 CSV가 있는 폴더에서 `psql`을 열어 다음과 같이 적재합니다.
+압축을 풀어 CSV 9개가 들어 있는 폴더에서 터미널을 엽니다. PostgreSQL을 실행한 상태에서 아래 명령을 실행합니다. `postgres`는 로컬 접속 계정으로, SQL 파일 경로는 이 저장소를 내려받은 위치에 맞게 바꿉니다. 이미 같은 이름의 테이블이 있다면 별도의 빈 데이터베이스에서 실행하고 `DB_NAME`도 그 이름으로 설정합니다.
 
-```sql
-\copy public.customers (customer_id, customer_unique_id, customer_zip_code_prefix, customer_city, customer_state) FROM 'olist_customers_dataset.csv' WITH (FORMAT csv, HEADER true)
+```powershell
+$env:PGCLIENTENCODING = "UTF8"
+createdb -h localhost -U postgres olist
+psql -h localhost -U postgres -d olist -f "D:/portfolio/olist_portfolio/projects/A_delivery_quality/sql/day00_load_data.sql"
 ```
+
+[테이블 생성 및 CSV 적재 SQL](sql/day00_load_data.sql)은 9개 테이블을 한 트랜잭션에서 생성하고 적재합니다. 적재가 끝나면 [데이터 검증 SQL](sql/day01_data_validation.sql)에서 배송 분석 대상 96,470건과 지연 주문 6,534건을 확인합니다.
 
 저장소 루트에서 `python -m pip install -r requirements.txt`를 실행합니다. 루트의 `.env`에 아래 항목을 만들고 로컬 데이터베이스 접속값을 채웁니다.
 
 ```dotenv
 DB_USER=
 DB_PASSWORD=
-DB_HOST=
-DB_PORT=
-DB_NAME=
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=olist
 ```
 
 이후 [분석 보고서의 실행 순서](reports/analysis_report.md#93-실행-순서)를 따릅니다.
