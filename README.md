@@ -2,16 +2,12 @@
 
 브라질 이커머스 플랫폼 Olist의 공개 데이터를 활용한 데이터 분석 포트폴리오입니다.
 
-SQL을 활용한 데이터 검증과 분석용 데이터 구축, Python 기반 탐색적 분석 및 통계적 검증, Tableau 시각화를 통해 비즈니스 의사결정에 활용할 수 있는 인사이트를 도출하는 것을 목표로 합니다.
-
 ## Projects
 
 | 프로젝트 | 주제 | 상태 |
 |---|---|---|
 | [**A. Delivery Quality**](projects/A_delivery_quality/README.md) | 배송 품질 진단 및 개선 우선순위 분석 | 완료 |
-| B | 추후 선정 | 예정 |
-| C | 추후 선정 | 예정 |
-| D | 추후 선정 | 예정 |
+| B~D | 주제 선정 예정 | |
 
 ## Project A — Delivery Quality Analysis
 
@@ -40,7 +36,7 @@ PostgreSQL · SQL · Python · pandas · SciPy · statsmodels · Tableau
 
 **[배송 품질 모니터링](https://public.tableau.com/views/Olist_17945549244590/Olist) · [배송 개선 우선순위 진단](https://public.tableau.com/views/Olist_17945549244590/Olist_1)**
 
-상세 분석 과정과 재현 코드는 `projects/A_delivery_quality/`에서 확인할 수 있습니다.
+[Project A 분석 보고서](projects/A_delivery_quality/reports/analysis_report.md)에서 결과 해석과 실행 순서를 확인할 수 있습니다.
 
 ## Data
 

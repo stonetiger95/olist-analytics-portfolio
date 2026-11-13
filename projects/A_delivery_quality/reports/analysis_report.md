@@ -274,14 +274,14 @@ A_delivery_quality/
 
 ### 9.2. 소스 코드
 
-- [Day 01 · 데이터 품질 검증 SQL](../sql/day01_data_validation.sql)
-- [Day 02 · EDA 및 통계 분석 Notebook](../notebooks/day02_delivery_distribution.ipynb)
-- [Day 03 · 분석용 View 생성 SQL](../sql/day03_analysis_views.sql)
-- [Day 04 · 비즈니스 진단 SQL](../sql/day04_business_analysis.sql)
+- [데이터 품질 검증 SQL](../sql/day01_data_validation.sql)
+- [EDA 및 통계 분석 Notebook](../notebooks/day02_delivery_distribution.ipynb)
+- [분석용 View 생성 SQL](../sql/day03_analysis_views.sql)
+- [비즈니스 진단 SQL](../sql/day04_business_analysis.sql)
 
 ### 9.3. 실행 순서
 
-1. Olist 공개 원천 데이터를 PostgreSQL `olist` 데이터베이스에 적재한다.
+1. [데이터 준비](../README.md#데이터-준비)에 따라 PostgreSQL `olist` 데이터베이스에 CSV를 적재하고 Python 환경을 설치한다.
 2. `day01_data_validation.sql`로 테이블 구조, 참조 관계, 지연 KPI를 검증한다.
 3. `day03_analysis_views.sql`을 실행해 `analytics` 스키마 및 분석용 View를 생성한다.
 4. 최상위 `.env`에 DB 접속 환경변수를 설정하고 `notebooks/day02_delivery_distribution.ipynb`를 실행한다. 주요 변수 이름은 `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME`이다.

@@ -127,6 +127,10 @@ SP 소재 판매자의 배송 목적지를 비교하면 다음과 같습니다.
 | 01. 배송 품질 현황 및 추이 | 전체 KPI, 월별 배송 지연율, 고객 지역 필터 |
 | 02. 배송 개선 우선순위 진단 | 지역·상품군별 초과 지연 건수, 판매자별 주문량·지연율 |
 
+![배송 품질 현황 및 추이](dashboards/delivery-monitoring.png)
+
+![배송 개선 우선순위 진단](dashboards/delivery-priorities.png)
+
 ## 6. 운영 개선 제안
 
 분석 결과를 근거로 다음과 같은 운영 방향을 제안합니다.
@@ -146,26 +150,42 @@ SP 소재 판매자의 배송 목적지를 비교하면 다음과 같습니다.
 - 초과 지연 건수는 평균 대비 관측된 차이이지 실제 개선 가능 건수가 아닙니다.
 - 배송 지연과 저평점의 연관성은 인과적 효과를 의미하지 않습니다.
 
-## 8. 프로젝트 파일
+## 8. 분석 파일
 
-```text
-A_delivery_quality/
-├── README.md
-├── sql/
-│   ├── day01_data_validation.sql
-│   ├── day03_analysis_views.sql
-│   └── day04_business_analysis.sql
-├── notebooks/
-│   └── day02_delivery_distribution.ipynb
-├── dashboards/
-│   └── Olist 이커머스 배송 품질 진단 및 개선 우선순위 분석.twbx
-└── reports/
-    └── analysis_report.md
+- SQL — [데이터 검증](sql/day01_data_validation.sql) · [분석용 뷰](sql/day03_analysis_views.sql) · [운영 진단](sql/day04_business_analysis.sql)
+- [배송 지연 분석 Notebook](notebooks/day02_delivery_distribution.ipynb)
+- [분석 보고서](reports/analysis_report.md)
+
+## 데이터 준비
+
+[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)에서 CSV를 받아 PostgreSQL의 `olist` 데이터베이스를 준비합니다. 첫 행을 헤더로 사용하고 아래 이름으로 `public` 스키마에 적재합니다.
+
+| CSV | 테이블 |
+|---|---|
+| `olist_customers_dataset.csv` | `customers` |
+| `olist_geolocation_dataset.csv` | `geolocation` |
+| `olist_order_items_dataset.csv` | `order_items` |
+| `olist_order_payments_dataset.csv` | `payments` |
+| `olist_order_reviews_dataset.csv` | `reviews` |
+| `olist_orders_dataset.csv` | `orders` |
+| `olist_products_dataset.csv` | `products` |
+| `olist_sellers_dataset.csv` | `sellers` |
+| `product_category_name_translation.csv` | `product_category_name_translation` |
+
+테이블을 먼저 생성합니다. ID·우편번호·범주에는 `text`, 날짜와 시각에는 `timestamp`, 건수와 순번에는 `integer`, 금액과 좌표에는 `numeric`을 사용합니다. 예를 들어 `customers` 테이블을 만든 뒤 CSV가 있는 폴더에서 `psql`을 열어 다음과 같이 적재합니다.
+
+```sql
+\copy public.customers (customer_id, customer_unique_id, customer_zip_code_prefix, customer_city, customer_state) FROM 'olist_customers_dataset.csv' WITH (FORMAT csv, HEADER true)
 ```
 
-- **SQL:** 데이터 검증, 분석용 View 생성 및 비즈니스 분석
-- **Notebook:** EDA, 통계적 검정, 로지스틱 회귀 및 결과 검증
-- **Tableau:** 대화형 대시보드
-- **분석 보고서:** 상세 방법론, 결과 해석 및 분석 한계
+저장소 루트에서 `python -m pip install -r requirements.txt`를 실행합니다. 루트의 `.env`에 아래 항목을 만들고 로컬 데이터베이스 접속값을 채웁니다.
 
-Python 패키지 버전은 저장소 최상위 `requirements.txt`에서 관리합니다.
+```dotenv
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+DB_NAME=
+```
+
+이후 [분석 보고서의 실행 순서](reports/analysis_report.md#93-실행-순서)를 따릅니다.
