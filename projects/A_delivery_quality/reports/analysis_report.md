@@ -3,7 +3,7 @@
 > **프로젝트 유형:** 관측 데이터 기반 운영 품질 진단 및 의사결정 지원  
 > **기술:** PostgreSQL · Python(pandas, SciPy, statsmodels) · Tableau  
 > **분석 단위:** 배송 완료 주문, 고객 지역, 단일 판매자, 단일·완전 분류 상품군  
-> **Tableau Public:** [배송 품질 모니터링 및 개선 우선순위 대시보드](https://public.tableau.com/views/Olist_17945549244590/Olist_1?:language=ko-KR&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+> **Tableau Public:** [배송 품질 모니터링](https://public.tableau.com/views/Olist_17945549244590/Olist) · [배송 개선 우선순위 진단](https://public.tableau.com/views/Olist_17945549244590/Olist_1)
 
 ## Executive Summary
 

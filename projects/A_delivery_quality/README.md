@@ -2,7 +2,7 @@
 
 **SQL · Python · 통계 분석 · Tableau**
 
-[Tableau Public 대시보드 바로가기](https://public.tableau.com/views/Olist_17945549244590/Olist_1)
+[배송 품질 모니터링](https://public.tableau.com/views/Olist_17945549244590/Olist) · [배송 개선 우선순위 진단](https://public.tableau.com/views/Olist_17945549244590/Olist_1)
 
 ## 1. 프로젝트 개요
 
@@ -118,7 +118,7 @@ SP 소재 판매자의 배송 목적지를 비교하면 다음과 같습니다.
 
 ## 5. Tableau 대시보드
 
-**[대시보드 열기 — Tableau Public](https://public.tableau.com/views/Olist_17945549244590/Olist_1)**
+**[배송 품질 모니터링](https://public.tableau.com/views/Olist_17945549244590/Olist) · [배송 개선 우선순위 진단](https://public.tableau.com/views/Olist_17945549244590/Olist_1)**
 
 두 개의 대시보드로 구성했습니다.
 

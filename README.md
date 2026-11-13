@@ -8,7 +8,7 @@ SQL을 활용한 데이터 검증과 분석용 데이터 구축, Python 기반 �
 
 | 프로젝트 | 주제 | 상태 |
 |---|---|---|
-| **A. Delivery Quality** | 배송 품질 진단 및 개선 우선순위 분석 | 완료 |
+| [**A. Delivery Quality**](projects/A_delivery_quality/README.md) | 배송 품질 진단 및 개선 우선순위 분석 | 완료 |
 | B | 추후 선정 | 예정 |
 | C | 추후 선정 | 예정 |
 | D | 추후 선정 | 예정 |
@@ -38,7 +38,7 @@ PostgreSQL · SQL · Python · pandas · SciPy · statsmodels · Tableau
 
 해당 결과는 관측적 연관성과 운영 점검 후보를 제시하며, 인과관계나 실제 개선 효과를 입증하는 것은 아닙니다.
 
-**[Tableau Public 대시보드](https://public.tableau.com/views/Olist_17945549244590/Olist_1)**
+**[배송 품질 모니터링](https://public.tableau.com/views/Olist_17945549244590/Olist) · [배송 개선 우선순위 진단](https://public.tableau.com/views/Olist_17945549244590/Olist_1)**
 
 상세 분석 과정과 재현 코드는 `projects/A_delivery_quality/`에서 확인할 수 있습니다.
 
