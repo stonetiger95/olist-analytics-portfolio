@@ -152,8 +152,8 @@ SP 소재 판매자의 배송 목적지를 비교하면 다음과 같습니다.
 
 ## 8. 분석 파일
 
-- SQL — [데이터 검증](sql/day01_data_validation.sql) · [분석용 뷰](sql/day03_analysis_views.sql) · [운영 진단](sql/day04_business_analysis.sql)
-- [배송 지연 분석 Notebook](notebooks/day02_delivery_distribution.ipynb)
+- SQL — [데이터 검증](sql/01_data_validation.sql) · [분석용 뷰](sql/03_analysis_views.sql) · [운영 진단](sql/04_business_analysis.sql)
+- [배송 지연 분석 Notebook](notebooks/02_delivery_distribution.ipynb)
 - [분석 보고서](reports/analysis_report.md)
 
 ## 데이터 준비
@@ -177,10 +177,10 @@ SP 소재 판매자의 배송 목적지를 비교하면 다음과 같습니다.
 ```powershell
 $env:PGCLIENTENCODING = "UTF8"
 createdb -h localhost -U postgres olist
-psql -h localhost -U postgres -d olist -f "D:/portfolio/olist_portfolio/projects/A_delivery_quality/sql/day00_load_data.sql"
+psql -h localhost -U postgres -d olist -f "D:/portfolio/olist_portfolio/projects/A_delivery_quality/sql/00_load_data.sql"
 ```
 
-[테이블 생성 및 CSV 적재 SQL](sql/day00_load_data.sql)은 9개 테이블을 한 트랜잭션에서 생성하고 적재합니다. 적재가 끝나면 [데이터 검증 SQL](sql/day01_data_validation.sql)에서 배송 분석 대상 96,470건과 지연 주문 6,534건을 확인합니다.
+[테이블 생성 및 CSV 적재 SQL](sql/00_load_data.sql)은 9개 테이블을 한 트랜잭션에서 생성하고 적재합니다. 적재가 끝나면 [데이터 검증 SQL](sql/01_data_validation.sql)에서 배송 분석 대상 96,470건과 지연 주문 6,534건을 확인합니다.
 
 저장소 루트에서 `python -m pip install -r requirements.txt`를 실행합니다. 루트의 `.env`에 아래 항목을 만들고 로컬 데이터베이스 접속값을 채웁니다.
 

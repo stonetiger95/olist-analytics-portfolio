@@ -259,12 +259,12 @@ SP는 지연 주문 **1,820건**으로 절대 건수가 가장 많지만, 지연
 A_delivery_quality/
 ├── README.md
 ├── sql/
-│   ├── day00_load_data.sql
-│   ├── day01_data_validation.sql
-│   ├── day03_analysis_views.sql
-│   └── day04_business_analysis.sql
+│   ├── 00_load_data.sql
+│   ├── 01_data_validation.sql
+│   ├── 03_analysis_views.sql
+│   └── 04_business_analysis.sql
 ├── notebooks/
-│   └── day02_delivery_distribution.ipynb
+│   └── 02_delivery_distribution.ipynb
 ├── dashboards/
 │   └── Olist 이커머스 배송 품질 진단 및 개선 우선순위 분석.twbx
 └── reports/
@@ -275,18 +275,18 @@ A_delivery_quality/
 
 ### 9.2. 소스 코드
 
-- [데이터 품질 검증 SQL](../sql/day01_data_validation.sql)
-- [EDA 및 통계 분석 Notebook](../notebooks/day02_delivery_distribution.ipynb)
-- [분석용 View 생성 SQL](../sql/day03_analysis_views.sql)
-- [비즈니스 진단 SQL](../sql/day04_business_analysis.sql)
+- [데이터 품질 검증 SQL](../sql/01_data_validation.sql)
+- [EDA 및 통계 분석 Notebook](../notebooks/02_delivery_distribution.ipynb)
+- [분석용 View 생성 SQL](../sql/03_analysis_views.sql)
+- [비즈니스 진단 SQL](../sql/04_business_analysis.sql)
 
 ### 9.3. 실행 순서
 
 1. [데이터 준비](../README.md#데이터-준비)에 따라 PostgreSQL `olist` 데이터베이스에 CSV를 적재하고 Python 환경을 설치한다.
-2. `day01_data_validation.sql`로 테이블 구조, 참조 관계, 지연 KPI를 검증한다.
-3. 저장소 루트의 `.env`에 `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME`을 설정하고 [Day 02 Notebook](../notebooks/day02_delivery_distribution.ipynb)을 전체 실행한다. Notebook은 `public.orders`와 `public.reviews`를 읽는다.
-4. [Day 03 SQL](../sql/day03_analysis_views.sql)을 실행해 `analytics` 스키마와 분석용 뷰를 생성한다.
-5. `day04_business_analysis.sql`을 실행해 지역·판매자·상품군별 초과 지연 건수와 구매 월별 지연율을 확인한다.
+2. `01_data_validation.sql`로 테이블 구조, 참조 관계, 지연 KPI를 검증한다.
+3. 저장소 루트의 `.env`에 `DB_USER`, `DB_PASSWORD`, `DB_HOST`, `DB_PORT`, `DB_NAME`을 설정하고 [배송 지연 분석 Notebook](../notebooks/02_delivery_distribution.ipynb)을 전체 실행한다. Notebook은 `public.orders`와 `public.reviews`를 읽는다.
+4. [분석용 뷰 SQL](../sql/03_analysis_views.sql)을 실행해 `analytics` 스키마와 분석용 뷰를 생성한다.
+5. `04_business_analysis.sql`을 실행해 지역·판매자·상품군별 초과 지연 건수와 구매 월별 지연율을 확인한다.
 6. `dashboards/`의 Tableau 패키지 통합 문서를 열거나 Tableau Public 게시본에서 두 대시보드를 확인한다.
 
 Notebook의 마지막 검증 셀은 **배송 주문 96,470건, 지연 6,534건, 유효 리뷰 95,299건, 저평점 12,189건, 회귀 오즈비** 등을 확인한다. 로컬 PostgreSQL 연결 환경에서 전체 재실행한 결과 `PASS: Day 02 관측 단위·핵심 집계·모형 수치 검증 완료` 메시지를 확인했다.
