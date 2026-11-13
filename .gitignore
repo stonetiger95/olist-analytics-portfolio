@@ -1,0 +1,23 @@
+# Local datasets
+/data/
+
+# Notebook backups
+**/backup/
+
+# Database credentials
+.env
+.env.*
+!.env.example
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Temporary files
+*.log
+Thumbs.db
+.DS_Store
