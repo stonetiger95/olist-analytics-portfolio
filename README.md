@@ -7,7 +7,8 @@
 | 프로젝트 | 주제 | 상태 |
 |---|---|---|
 | [**A. Delivery Quality**](projects/A_delivery_quality/README.md) | 배송 품질 진단 및 개선 우선순위 분석 | 완료 |
-| B~D | 주제 선정 예정 | |
+| [**B. Demand Forecasting**](projects/B_demand_forecasting/README.md) | 상품군별 1~4주 주문 상품 수량 예측 | 완료 |
+| C~D | 주제 선정 예정 | |
 
 ## Project A — Delivery Quality Analysis
 
@@ -37,6 +38,34 @@ PostgreSQL · SQL · Python · pandas · SciPy · statsmodels · Tableau
 **[배송 품질 모니터링](https://public.tableau.com/views/Olist_17945549244590/Olist) · [배송 개선 우선순위 진단](https://public.tableau.com/views/Olist_17945549244590/Olist_1)**
 
 [Project A 분석 보고서](projects/A_delivery_quality/reports/analysis_report.md)에서 결과 해석과 실행 순서를 확인할 수 있습니다.
+
+## Project B — Demand Forecasting
+
+**분석 질문**
+
+상품군별 향후 1~4주 주문 상품 수량을 어떤 모델로 예측하는 것이 적절할까요?
+
+**기술 스택**
+
+PostgreSQL · SQL · Python · pandas · statsmodels · scikit-learn · Tableau
+
+**핵심 분석 결과**
+
+5개 상품군의 76주 시계열에서 최초 64주로 13개 모델을 비교하고, 마지막 12주에서 선정 모델의 성능을 평가했습니다. 주문 상태와 관계없이 구매 시점의 주문 상품 항목을 집계했습니다.
+
+| 상품군 | 최종 테스트 모델 | 검증 WAPE | 테스트 WAPE | Naive 대비 상대 개선율 |
+|---|---|---:|---:|---:|
+| 뷰티·건강 | ETS(A,A,N) | 22.56% | 15.43% | +39.93% |
+| 침구·욕실 | ETS(A,Ad,N) | 23.71% | 21.03% | +30.35% |
+| 스포츠·레저 | ETS(A,A,N) | 23.06% | 23.98% | +14.32% |
+| 컴퓨터·주변기기 | Naive | 36.49% | 29.09% | 0.00% |
+| 가구·장식 | MA4 | 35.51% | 34.22% | −8.22% |
+
+선정 모델은 5개 상품군 중 3개에서 Naive보다 테스트 WAPE가 낮았습니다. 컴퓨터·주변기기는 내부 검증에서 ARIMA(0,1,0)이 최우수 후보였고, 예측값이 동일한 Naive를 최종 테스트에 사용했습니다.
+
+[수요예측 성능 개요](https://public.tableau.com/views/Olist_17949206072540/sheet4) · [예측 결과 및 오차 분석](https://public.tableau.com/views/Olist_17949206072540/sheet5)
+
+[Project B 개요와 실행 방법](projects/B_demand_forecasting/README.md) · [Project B 분석 보고서](projects/B_demand_forecasting/reports/analysis.md)
 
 ## Data
 
